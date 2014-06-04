@@ -170,8 +170,21 @@
         $('.ellipsis').ellipsis(true);
     });
 
-    $(window).on('resize', function() {
-        $('.ellipsis').ellipsis();
+    //support resize event to update existing ellipsificated elements
+    $(window).on('resize', function () {
+        window.setTimeout($.ellipsis, 1); //postpone after all DOM changes are finished
     });
+    if ("onorientationchange" in window) {
+        $(window).on('orientationchange', function () {
+            window.setTimeout($.ellipsis, 1); //postpone after all DOM changes are finished
+        });
+    }
+
+    /**
+     * Manually updates all existing ellipsificated elements
+     */
+    $.ellipsis = function () {
+        $('.ellipsis').ellipsis();
+    };
 
 }(window.jQuery));

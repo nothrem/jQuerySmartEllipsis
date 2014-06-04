@@ -58,7 +58,25 @@ Will output:
     | that do|Some text that does not fit.|   text if hovered by mouse, stylus, etc.
     |--------|----------------------------|
 
+Updating text:
 
+    <script>$('div').text('Another text that does not fit.').ellipsis();</script>
+
+Will add ellipsis to the new text.
+
+    <script>
+        $('div').addClass('ellipsis');
+        $('div').text('Another text that does not fit.');
+        $('div').text('Yet Another text that does not fit.');
+        $('div').text('Final text that does not fit.');
+        $.ellipsis();
+    </script>
+
+Calling method $.ellipsis() will update ellipsis all elements that has ellipsis
+class (this class is added to any element that the method ellipsis() was called
+on so it work on these elements as well.)
+
+Ellipsis are also automatically updated when screen resize or rotation is detected.
 
 License
 -------
