@@ -100,7 +100,7 @@
                     len = spacePos;
                 }
             }
-            return str.substr(0, len).trim() + "…";
+            return str.substr(0, len).trim() + "â€¦";
         },
         search = function (i, params) {
             params.tempElement.html(params.ellipsis(this, i, params.breakWords));
