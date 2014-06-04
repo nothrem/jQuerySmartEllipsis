@@ -2,10 +2,12 @@ jQuerySmartEllipsis
 ===================
 https://github.com/nothrem/jQuerySmartEllipsis
 
-jQuery plugin to add ellipsis ('...') to the text while preserving CSS properties (not) to wrap words and break lines.
+jQuery plugin to add ellipsis ('â€¦', '...') to the text while preserving CSS properties (not) to wrap words and break lines.
 
 Usage
 -----
+
+Adding ellipsis:
 
 	<div style="height:2em;">Some text that does not fit.</div>
 	<div style="height:1em; white-space: nowrap;">Some text that does not fit.</div>
@@ -14,41 +16,47 @@ Usage
 	<script>$('div').ellipsis();</script>
 
 Will output:
-|-------------|
-| Some text   |   default white space will wrap words to new line
-| that does…  |   default word wrap will not break word and will add ellipsis into spaces
-|-------------|
 
-|-------------|
-| Some text…  |   nowrap white space will keep text in one line
-|-------------|
+    |-------------|
+    | Some text   |   default white space will wrap words to new line
+    | that doesâ€¦  |   default word wrap will not break word and will add ellipsis into spaces
+    |-------------|
 
-|-------------|
-| Some text   |   default white space will wrap words to new line
-| that does n…|   break words will add ellipsis to the end regardless of spaces
-|-------------|
+    |-------------|
+    | Some textâ€¦  |   nowrap white space will keep text in one line
+    |-------------|
 
-|-------------|
-| Some text t…|   combination of previous - equals to original CSS3 text-overflow:ellipsis
-|-------------|
+    |-------------|
+    | Some text   |   default white space will wrap words to new line
+    | that does nâ€¦|   break words will add ellipsis to the end regardless of spaces
+    |-------------|
 
+    |-------------|
+    | Some text tâ€¦|   combination of previous - equals to original CSS3 text-overflow:ellipsis
+    |-------------|
+
+Automatic function
 
 	<div style="height:2em;" class="ellipsis">Some text that does not fit.</div>
 
 Will output:
-|-------------|
-| Some text   |   Any element with class 'ellipsis' will be
-| that does…  |   default word wrap will not break word and will add ellipsis into spaces
-|-------------|
+
+    |-------------|
+    | Some text   |   Any element with class 'ellipsis' will be
+    | that doesâ€¦  |   modified automatically when page is loaded
+    |-------------|
+
+Adding tooltip with original text:
 
 	<div style="height:2em;">Some text that does not fit.</div>
 	<script>$('div').ellipsis(true);</script>
 
 Will output:
-|-------------|
-| Some te|----------------------------|   Element will have tooltip with original
-| that do|Some text that does not fit.|   text if hovered by mouse, stylus, etc.
-|--------|----------------------------|
+
+    |-------------|
+    | Some te|----------------------------|   Element will have tooltip with original
+    | that do|Some text that does not fit.|   text if hovered by mouse, stylus, etc.
+    |--------|----------------------------|
 
 
 
