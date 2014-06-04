@@ -153,9 +153,11 @@
 
                 len = content.lastIndexByFunction(search, {tempElement: tempElement, comparator: comparator, ellipsis: ellipsis, breakWords: breakWords});
                 if (-1 < len) {
-                    el.data('origText', content);
-                    el.data('trimText', ellipsis(content, len, breakWords));
-                    el.html(el.data('trimText'));
+                    el
+                        .data('origText', content)
+                        .data('trimText', ellipsis(content, len, breakWords))
+                        .html(el.data('trimText'))
+                        .addClass('ellipsis');
                 } //else even one letter cannot be displayed with ellipsis, so leave it as-is
 
                 tempElement.remove();
