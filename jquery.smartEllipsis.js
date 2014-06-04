@@ -170,4 +170,8 @@
         $('.ellipsis').ellipsis(true);
     });
 
+    $(window).on('resize', function() {
+        $('.ellipsis').ellipsis();
+    });
+
 }(window.jQuery));
