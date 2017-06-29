@@ -4,10 +4,17 @@ https://github.com/nothrem/jQuerySmartEllipsis
 
 jQuery plugin to add ellipsis ('…', '...') to the text while preserving CSS properties (not) to wrap words and break lines.
 
+Installation
+-----
+
+```> bower install jQuerySmartEllipsis```
+
+Or just download or fork the repository at https://github.com/nothrem/jQuerySmartEllipsis .
+
 Usage
 -----
 
-Adding ellipsis:
+Adding ellipsis...
 
 	<div style="height:2em;">Some text that does not fit.</div>
 	<div style="height:1em; white-space: nowrap;">Some text that does not fit.</div>
@@ -15,7 +22,7 @@ Adding ellipsis:
 	<div style="height:1em; white-space: nowrap; word-wrap: break-words;">Some text that does not fit.</div>
 	<script>$('div').ellipsis();</script>
 
-Will output:
+... will output:
 
     |-------------|
     | Some text   |   default white space will wrap words to new line
@@ -35,34 +42,34 @@ Will output:
     | Some text t…|   combination of previous - equals to original CSS3 text-overflow:ellipsis
     |-------------|
 
-Automatic function
+Automatic function...
 
 	<div style="height:2em;" class="ellipsis">Some text that does not fit.</div>
 
-Will output:
+... will output:
 
     |-------------|
     | Some text   |   Any element with class 'ellipsis' will be
     | that does…  |   modified automatically when page is loaded
     |-------------|
 
-Adding tooltip with original text:
+Adding tooltip with original text...
 
 	<div style="height:2em;">Some text that does not fit.</div>
 	<script>$('div').ellipsis(true);</script>
 
-Will output:
+... will output:
 
     |-------------|
     | Some te|----------------------------|   Element will have tooltip with original
     | that do|Some text that does not fit.|   text if hovered by mouse, stylus, etc.
     |--------|----------------------------|
 
-Updating text:
+Updating text...
 
     <script>$('div').text('Another text that does not fit.').ellipsis();</script>
 
-Will add ellipsis to the new text.
+... will add ellipsis to the new text.
 
     <script>
         $('div').addClass('ellipsis');
@@ -72,8 +79,8 @@ Will add ellipsis to the new text.
         $.ellipsis();
     </script>
 
-Calling method $.ellipsis() will update ellipsis all elements that has ellipsis
-class (this class is added to any element that the method ellipsis() was called
+Calling method ```$.ellipsis()``` will update ellipsis on all elements that has ```ellipsis```
+class (this class is added to any element that the method ```ellipsis()``` was called
 on so it work on these elements as well.)
 
 Ellipsis are also automatically updated when screen resize or rotation is detected.
@@ -83,9 +90,9 @@ License
 
 Free for any usage.
 
-If modified or forked, please keep the URL for original GitHub repository.
+When modified or forked, please keep the URL for original GitHub repository.
 
-If using in custom-minified version, please make sure file header remains in the file.
+When using in custom-minified version, please make sure file header remains in the file.
 
 Code based on StackOverflow forum: http://stackoverflow.com/questions/536814/insert-ellipsis-into-html-tag-if-content-too-wide
 Code improved for better performance and extended by Nothrem Sinsky: https://github.com/nothrem
