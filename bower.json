@@ -1,0 +1,20 @@
+{
+  "name": "jQuerySmartEllipsis",
+  "homepage": "https://github.com/nothrem/jQuerySmartEllipsis",
+  "authors": [
+    "nothrem <ellipsis@nothrem.cz>"
+  ],
+  "description": "jQuery plugin to add ellipsis ('...') to the text while preserving CSS properties (not) to wrap words and break lines.",
+  "main": "jquery.smartEllipsis.js",
+  "keywords": [
+    "jquery",
+    "ellipsis",
+    "word-wrap",
+    "break-word",
+    "text-overflow"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "jquery": ">=1.11.1"
+  }
+}
