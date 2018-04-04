@@ -100,6 +100,9 @@
                     len = spacePos;
                 }
             }
+            if ('.' === str[len - 1]) { //If the trimmed text ends with a dot (end of sentence)
+                --len;                  //...then remove it to prevent creating quadruple-dot (....)
+            }
             return str.substr(0, len).trim() + "&hellip;";
         },
         search = function (i, params) {
@@ -137,7 +140,9 @@
                     .css('position', 'absolute')
                     .css('overflow', 'visible')
                     .width(multiline ? el.width() : 'auto')
+                    .css('max-width', 'none')
                     .height(multiline ? 'auto' : el.height())
+                    .css('max-height', 'none')
                     .html(content);
                 el.after(tempElement);
                 comparator = (multiline ? tooTall : tooWide).bind({el: el, tempElement: tempElement});
