@@ -1,10 +1,11 @@
 /**
+ * @preserve
  * jQuerySmartEllipsis
  * https://github.com/nothrem/jQuerySmartEllipsis
  * Adds ellipsis character to the text. Supports both single-line and multi-line text, does not break words unless specified.
  * Code based on StackOverflow forum: http://stackoverflow.com/questions/536814/insert-ellipsis-into-html-tag-if-content-too-wide
  * Code improved for better performance and extended by Nothrem Sinsky: https://github.com/nothrem
- * (c) 2014
+ * (c) 2014 - 2018
  */
 (function ($) {
 
@@ -103,7 +104,7 @@
             if ('.' === str[len - 1]) { //If the trimmed text ends with a dot (end of sentence)
                 --len;                  //...then remove it to prevent creating quadruple-dot (....)
             }
-            return str.substr(0, len).trim() + "&hellip;";
+            return str.substr(0, len).trim() + $($.parseHTML('&hellip;')).text(); //use HTML entity for ellipsis but convert it to the actual character
         },
         search = function (i, params) {
             params.tempElement.html(params.ellipsis(this, i, params.breakWords));
@@ -135,6 +136,7 @@
 
             if (el.css("overflow") === "hidden") {
                 content = (el.html() === el.data('trimText')) ? el.data('origText') : el.html();
+                el.html(content); //if the text was already trimmed, make sure the original element is sized to its maximum size.
                 tempElement = $(this.cloneNode(true))
                     .hide()
                     .css('position', 'absolute')
