@@ -178,11 +178,11 @@
     });
 
     //support resize event to update existing ellipsificated elements
-    $(window).on('resize', function () {
+    $(window).off('resize.ellipsis').on('resize.ellipsis', function () {
         window.setTimeout($.ellipsis, 1); //postpone after all DOM changes are finished
     });
-    if ("onorientationchange" in window) {
-        $(window).on('orientationchange', function () {
+    if ('onorientationchange' in window) {
+        $(window).off('orientationchange.ellipsis').on('orientationchange.ellipsis', function () {
             window.setTimeout($.ellipsis, 1); //postpone after all DOM changes are finished
         });
     }
