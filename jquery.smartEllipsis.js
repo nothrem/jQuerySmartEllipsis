@@ -135,7 +135,7 @@
             }
 
             if (el.css("overflow") === "hidden") {
-                content = (el.html() === el.data('trimText')) ? el.data('origText') : el.html();
+                content = el.data('origText') ?? el.html();
                 el.html(content); //if the text was already trimmed, make sure the original element is sized to its maximum size.
                 tempElement = $(this.cloneNode(true))
                     .hide()
