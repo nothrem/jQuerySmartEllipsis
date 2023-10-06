@@ -5,7 +5,7 @@
  * Adds ellipsis character to the text. Supports both single-line and multi-line text, does not break words unless specified.
  * Code based on StackOverflow forum: http://stackoverflow.com/questions/536814/insert-ellipsis-into-html-tag-if-content-too-wide
  * Code improved for better performance and extended by Nothrem Sinsky: https://github.com/nothrem
- * (c) 2014 - 2018
+ * (c) 2014 - 2023
  */
 (function ($) {
 
@@ -183,6 +183,12 @@
     });
     if ('onorientationchange' in window) {
         $(window).off('orientationchange.ellipsis').on('orientationchange.ellipsis', function () {
+            window.setTimeout($.ellipsis, 1); //postpone after all DOM changes are finished
+        });
+    }
+    if ('fullscreenElement' in document) {
+        $(window).off('fullscreenchange.ellipsis mozfullscreenchange.ellipsis webkitfullscreenchange.ellipsis MSFullscreenChange.ellipsis')
+                 .on('fullscreenchange.ellipsis mozfullscreenchange.ellipsis webkitfullscreenchange.ellipsis MSFullscreenChange.ellipsis', function () {
             window.setTimeout($.ellipsis, 1); //postpone after all DOM changes are finished
         });
     }
