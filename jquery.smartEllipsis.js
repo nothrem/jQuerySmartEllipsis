@@ -135,7 +135,7 @@
             }
 
             if (el.css("overflow") === "hidden") {
-                content = el.data('origText') ?? el.html();
+                content = el.data('origText') || el.html();
                 el.html(content); //if the text was already trimmed, make sure the original element is sized to its maximum size.
                 tempElement = $(this.cloneNode(true))
                     .hide()
@@ -168,6 +168,13 @@
                 } //else even one letter cannot be displayed with ellipsis, so leave it as-is
 
                 tempElement.remove();
+            }
+            else //element can overflow
+                if (el.hasClass('ellipsis')          //If the element was already modified (or marked as available for this feature)...
+                && el.data('trimText')
+                && el.html() !== el.data('origText') //...and still contains trimmed text, return original text to allow it to overflow.
+            ) {
+                el.html(el.data('origText'));
             }
         });
     };
