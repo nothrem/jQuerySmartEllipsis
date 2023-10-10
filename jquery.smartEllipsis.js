@@ -31,7 +31,7 @@
         /**
          * Alternative of String.lastIndexOf() that uses function to check if found position is correct. Returns last matching position in the string. May be slower than indexByFunction().
          *
-         * @param  {Function} func Function to search for a position. Function is called in the scope of the string and is given a param with current searching position. It should return 0 if the position is OK or position/negative value of how wrong was the position (typically +1 or -1).
+         * @param  {Function} func Function to search for a position. The function is called in the scope of the string and is given a param with current searching position. It should return 0 if the position is OK or position/negative value of how wrong was the position (typically +1 or -1).
          * @param  {Mixed} params This parameter will be passed in comparision function (as second parameter) as-is.
          * @return {Number} Position in the String. Returns -1 if no position found.
          */
@@ -61,7 +61,7 @@
     }
 
     //Allow to handle event 'show' when an element gets visible
-    $.each(["show", "toggleClass", "addClass", "removeClass"], function () {
+    $.each(['show', 'toggleClass', 'addClass', 'removeClass'], function () {
         var
             oldFn = $.fn[this], //get the old function, e.g. $.fn.show   or $.fn.hide
             /**
@@ -69,7 +69,7 @@
              */
             triggerShowEvent = function () {
                 // trigger the show msg
-                $(this).triggerHandler("show");
+                $(this).triggerHandler('show');
             };
 
         /**
@@ -77,11 +77,11 @@
          */
         $.fn[this] = function () {
             var
-                hidden = this.find(":hidden").add(this.filter(":hidden")), // get the items that are currently hidden
+                hidden = this.find(':hidden').add(this.filter(':hidden')), // get the items that are currently hidden
                 result = oldFn.apply(this, arguments);                     // run the original function
 
-            // for all of the hidden elements that are now visible
-            hidden.filter(":visible").each(triggerShowEvent);
+            // for all the hidden elements that are now visible
+            hidden.filter(':visible').each(triggerShowEvent);
 
             return result;
         };
@@ -104,7 +104,7 @@
             if ('.' === str[len - 1]) { //If the trimmed text ends with a dot (end of sentence)
                 --len;                  //...then remove it to prevent creating quadruple-dot (....)
             }
-            return str.substr(0, len).trim() + $($.parseHTML('&hellip;')).text(); //use HTML entity for ellipsis but convert it to the actual character
+            return str.slice(0, len).trim() + $($.parseHTML('&hellip;')).text(); //use HTML entity for ellipsis but convert it to the actual character
         },
         search = function (i, params) {
             params.tempElement.html(params.ellipsis(this, i, params.breakWords));
@@ -127,15 +127,15 @@
                 comparator,
                 len;
 
-            if (el.is(":hidden")) {               //if this isn't visible,
+            if (el.is(':hidden')) {               //if this isn't visible,
                 el.one('show', function () {      //then hook up the show event
                     $(this).ellipsis(addTooltip);
                 });
                 return;
             }
 
-            if (el.css("overflow") === "hidden") {
-                content = el.data('origText') || el.html();
+            if (el.css('overflow') === 'hidden') { //element cannot overflow text -> must add ellipsis if needed
+                content = (el.data('origText') || el.html().trim());
                 el.html(content); //if the text was already trimmed, make sure the original element is sized to its maximum size.
                 tempElement = $(this.cloneNode(true))
                     .hide()
